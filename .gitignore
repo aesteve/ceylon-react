@@ -1,0 +1,9 @@
+*.log
+.DS_Store
+classes
+modules
+/.exploded
+.project
+.settings
+.classpath
+*~
