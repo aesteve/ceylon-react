@@ -1,12 +1,20 @@
-shared abstract class Component(state) {
-	
-	// TODO : static propTypes;
-	Map<String, Object> state;
+import ceylon.collection {
+	HashMap
+}
 
-	shared Map<String, Object> getInitialState() { // React will expect that
-		return state;
+shared abstract class Component satisfies ReactRenderable {
+	
+	Map<String, Object> props;
+	
+	shared new (Map<String,Object> props = HashMap()) {
+		this.props = props;
 	}
-	shared formal void setState(Map<String, Object> newState);
-	shared formal void render();
-	// TODO : and more methods : React's life-cycle, ...
+	
+	shared formal ReactRenderable _render();
+	
+	shared actual dynamic toReact() {
+		dynamic {
+			return React.createClass(this);
+		}
+	}
 }

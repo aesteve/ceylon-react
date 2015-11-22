@@ -1,5 +1,5 @@
-shared void render(Component component, String querySelector) {
+shared void render(ReactRenderable obj, String querySelector) {
 	dynamic {
-		React.render(React.createClass(component), document.querySelector(querySelector));
+		ReactDOM.render(obj.toReact(), document.querySelector(querySelector));
 	}
 }
